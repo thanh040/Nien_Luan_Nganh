@@ -70,7 +70,7 @@
             <div class="container-fluid header bg-white p-0">
                 <div class="row g-0 align-items-center flex-column-reverse flex-md-row">
                     <div class="col-md-6 p-5 mt-lg-5">
-                        <h1 class="display-5 animated fadeIn mb-4">Hãy Tìm <span class="text-primary">Đề Tài Luận Văn </span>Phù Hợp Với Bạn</h1>
+                        <h1 class="display-5 animated fadeIn mb-4">Tìm kiếm <span class="text-primary">đề tài luận văn</span></h1>
                         <a href="" class="btn btn-primary py-3 px-5 me-3 animated fadeIn">Cùng Bắt Đầu Nào</a>
                     </div>
                 </div>

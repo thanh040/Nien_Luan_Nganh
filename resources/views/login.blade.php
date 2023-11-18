@@ -106,16 +106,16 @@
         form .button input:hover{
         background: #12876f;
         }
-        .wrapper form .signup-link{
+        .wrapper form .login-link{
         text-align: center;
         margin-top: 20px;
         font-size: 17px;
         }
-        .wrapper form .signup-link a{
+        .wrapper form .login-link a{
         color: #16a085;
         text-decoration: none;
         }
-        form .signup-link a:hover{
+        form .login-link a:hover{
         text-decoration: underline;
         }
   </style>
@@ -137,7 +137,7 @@
           <div class="row button">
             <input type="submit" value="Đăng Nhập">
           </div>
-          <div class="signup-link">Bạn Có Tài Khoản Thành Viên Chưa? <a href="{{ url('/signup') }}">Đăng Ký</a></div>
+          <div class="register-link">Đăng Ký Thành Viên? <a href="{{ url('/register') }}">Đăng Ký</a></div>
         </form>
       </div>
     </div>

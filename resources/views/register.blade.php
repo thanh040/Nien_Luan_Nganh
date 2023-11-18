@@ -106,16 +106,16 @@
         form .button input:hover{
         background: #12876f;
         }
-        .wrapper form .signup-link{
+        .wrapper form .login-link{
         text-align: center;
         margin-top: 20px;
         font-size: 17px;
         }
-        .wrapper form .signup-link a{
+        .wrapper form .login-link a{
         color: #16a085;
         text-decoration: none;
         }
-        form .signup-link a:hover{
+        form .login-link a:hover{
         text-decoration: underline;
         }
     </style>
@@ -123,9 +123,13 @@
     <div class="container">
         <div class="wrapper">
           <div class="title"><span>Đăng Ký</span></div>
-          {{-- <form  method="POST" action="{{url('post-login')}}"> --}}
+          <form  method="POST" action="{{url('post-register')}}">
             <form>
                 @csrf
+                <div class="row">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Nhập Tên" name="name" required>
+                </div>
                 <div class="row">
                 <i class="fas fa-user"></i>
                 <input type="text" placeholder="Nhập Email" name="email" required>
@@ -136,12 +140,12 @@
                 </div>
                 <div class="row">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Xác Nhận Mật Khẩu" name="password" required>
+                <input type="password" placeholder="Xác Nhận Mật Khẩu" name="password_confirm" required>
                 </div>
                 <div class="row button">
                 <input type="submit" value="Đăng Ký">
                 </div>
-                <div class="signup-link">Bạn Có Tài Khoản Thành Viên Chưa? <a href="{{ url('/login') }}">Đăng Nhập</a></div>
+                <div class="login-link">Bạn Có Tài Khoản Thành Viên Chưa? <a href="{{ url('/login') }}">Đăng Nhập</a></div>
           </form>
         </div>
     </div>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-{{-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> --}}
-    <html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <link rel="icon" href="public/assets/img/library.png" type="image/x-icon" sizes="32x32">
@@ -24,17 +23,27 @@
         <!-- Libraries Stylesheet -->
         <link href="../lib/animate/animate.min.css" rel="stylesheet">
         <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    
-        <!-- Customized Bootstrap Stylesheet -->
-        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
-        
     </head>
-    
+    <style>
+        div .tittle-library{
+            text-align: center;
+            color:#16a085;
+        }
+        div.
+    </style>
     <body>
         <div class="container-xxl bg-white p-0">
+            <!-- Spinner Start -->
+            {{-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"> 
+                <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status"> 
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div> --}}
+            <!-- Spinner End -->
+    
+    
             <!-- Navbar Start -->
             <div class="container-fluid nav-bar bg-transparent">
                 <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
@@ -44,46 +53,27 @@
                         </div>
                         <h1 class="m-0 text-primary">Library</h1>
                     </a>
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" >
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto">
-                            <a href="{{ url('/') }}"href="index.html" class="nav-item nav-link active">Trang Chủ</a>
+                            <a href="{{ url('/') }}" class="nav-item nav-link active">Trang Chủ</a>
                             <a href="{{ url('/about') }}" class="nav-item nav-link">Về chúng tôi</a>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quản lý đề tài luận văn</a>
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quản lý đề tài luận văn</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="{{ url('/thesis-by-industry') }}" class="dropdown-item">Quản lý đề tài luận văn theo ngành</a>
                                     <a href="{{ url('/thesis-according-to-instructors') }}" class="dropdown-item">Quản lý đề tài luận văn theo giáo viên</a>
                                 </div>
                             </div>
-                            <div>
-                                @if(Auth::check())
-                                    <a href="#" class="nav-item nav-link">{{Auth::user()->name}}</a>
-                                @else
-                                    <a href="{{ url('/login') }}" class="nav-item nav-link"><u>Đăng Nhập</u></a>
-                                @endif
-                            </div>
-                            {{-- <div><a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a></div> --}}
+                            <div><a href="{{ url('/login') }}" class="nav-item nav-link"><u>Đăng Nhập</u></a></div>
                         </div>
                         
                     </div>
                 </nav>
             </div>
             <!-- Navbar End -->
-    
-    
-            <!-- Header Start -->
-            <div class="container-fluid header  bg-white">
-                <div class="row g-0 align-items-center justify-content-center flex-column-reverse flex-md-row">
-                    <div class="col-md-12 p-5 ">
-                        <h1 class="display-5 animated fadeIn mb-4">Tìm kiếm <span class="text-primary">đề tài luận văn </span></h1>
-                    </div>
-                </div>
-            </div>
-            <!-- Header End -->
-    
     
             <!-- Search Start -->
             <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
@@ -119,29 +109,8 @@
                 </div>
             </div>
             <!-- Search End -->
-            <!-- Category Start -->
-            <div class="container-xxl py-5">
-                <div class="container">
-                    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                        <h1 class="mb-3">Tên Ngành</h1>
-                        <p>Hãy Chọn Ngành Phù Hợp Với Bạn Nhé</p>
-                    </div>
-                    <div class="row g-4">
-                        @foreach($data as $item)
-                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="cat-item d-block bg-light text-center rounded p-3" href="">
-                                <div class="rounded p-4">
-                                    <div class="icon mb-3">
-                                        <img class="img-fluid" src="{{url('public/assets/img/'.$item->img_nganh)}}" alt="Icon">
-                                    </div>
-                                    <h6>{{$item->ten_nganh}}</h6>
-                                </div>
-                            </a>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>    
+    
+    
             <!-- Footer Start -->
             <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container py-5">
@@ -205,6 +174,7 @@
             <!-- Back to Top -->
             <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
+    
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
