@@ -7,7 +7,9 @@
      <title>Login Form | CodingLab</title> 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-   </head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+  </head>
    <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
         *{
@@ -124,28 +126,27 @@
         <div class="wrapper">
           <div class="title"><span>Đăng Ký</span></div>
           <form  method="POST" action="{{url('post-register')}}">
-            <form>
-                @csrf
-                <div class="row">
+              @csrf
+              <div class="row">
                 <i class="fas fa-user"></i>
                 <input type="text" placeholder="Nhập Tên" name="name" required>
-                </div>
-                <div class="row">
+              </div>
+              <div class="row">
                 <i class="fas fa-user"></i>
                 <input type="text" placeholder="Nhập Email" name="email" required>
-                </div>
-                <div class="row">
+              </div>
+              <div class="row">
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Nhập Mật Khẩu" name="password" required>
-                </div>
-                <div class="row">
+              </div>
+              <div class="row">
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Xác Nhận Mật Khẩu" name="password_confirm" required>
-                </div>
-                <div class="row button">
+              </div>
+              <div class="row button">
                 <input type="submit" value="Đăng Ký">
-                </div>
-                <div class="login-link">Bạn Có Tài Khoản Thành Viên Chưa? <a href="{{ url('/login') }}">Đăng Nhập</a></div>
+              </div>
+              <div class="login-link">Bạn Có Tài Khoản Thành Viên Chưa? <a href="{{ url('/login') }}">Đăng Nhập</a></div>
           </form>
         </div>
     </div>

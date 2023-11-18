@@ -7,6 +7,9 @@
      <title>Login Form | CodingLab</title> 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
+    <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
   </head>
   <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -119,6 +122,7 @@
         text-decoration: underline;
         }
   </style>
+  
   <body>
     <div class="container">
       <div class="wrapper">
@@ -142,4 +146,15 @@
       </div>
     </div>
   </body>
+  @if(session()->has('sweetAlert'))
+    <script>
+      Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Đăng ký thành công!',
+          showConfirmButton: false,
+          timer: 2000
+      })
+  </script>
+  @endif
 </html>
