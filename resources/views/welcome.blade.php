@@ -27,8 +27,8 @@
     
         <!-- Customized Bootstrap Stylesheet -->
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css"/>
         
         
     </head>
@@ -59,20 +59,60 @@
                                 </div>
                             </div>
                             <div>
-                                @if(Auth::check())
-                                    <a href="#" class="nav-item nav-link">{{Auth::user()->name}}</a>
+                                @if (Auth::check())
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      {{Auth::user()->name}}
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#exampleModal" data-bs-toggle="modal" data-bs-target="#exampleModal">Đổi mật khẩu</a></li>
+                                      <li><a class="dropdown-item" href="{{url('log-out')}}">Đăng Xuất</a></li>
+                                    </ul>
+                                  </div>
                                 @else
                                     <a href="{{ url('/login') }}" class="nav-item nav-link"><u>Đăng Nhập</u></a>
                                 @endif
                             </div>
                             {{-- <div><a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a></div> --}}
                         </div>
-                        
                     </div>
                 </nav>
             </div>
             <!-- Navbar End -->
-    
+            {{-- Modal --}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form method="POST" action="{{url('change-pass/'.Auth::id())}}">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      
+                        @csrf
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label">Mật Khẩu Cũ:</label>
+                          <input type="password" class="form-control" id="oldPassword">
+                        </div>
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label">Mật Khẩu Mới:</label>
+                          <input type="password" class="form-control" id="newPassword">
+                        </div>
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label">Xác Nhận Mật Khẩu:/label>
+                          <input type="password" class="form-control" id="confirmPassword">
+                        </div>
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                      <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+                  </div>
+                </form>
+                </div>
+              </div>
     
             <!-- Header Start -->
             <div class="container-fluid header  bg-white">
@@ -206,8 +246,8 @@
             <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
         <!-- JavaScript Libraries -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" ></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="lib/wow/wow.min.js"></script>
         <script src="lib/easing/easing.min.js"></script>
         <script src="lib/waypoints/waypoints.min.js"></script>

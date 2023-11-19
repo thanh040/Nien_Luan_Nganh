@@ -20,27 +20,14 @@ class UserController extends Controller
 
     public function check_login(Request $request)
     {
-        // $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password');
 
-        // if (Auth::attempt($credentials)) {
-        //     dd(Session::all());
-        //     return redirect('/'); // Chuyển hướng sau khi đăng nhập thành công
-        // } 
-        // else{
-        //     return redirect('about')->with('success', 'Login failed');
-        // }
-        $email = $request->input('email');
-        $password = $request->input('password');
-
-        // Thực hiện truy vấn SQL để kiểm tra xem thông tin người dùng có khớp hay không
-        $user = DB::table('users')->where('email', $email)->where('password', $password)->first();
-
-        if ($user) {
-            // Xác thực thành công
-            return redirect('/');
-        } else {
-            // Xác thực thất bại
-            return redirect('about')->with('success', 'Login failed');
+        if (Auth::attempt($credentials)) {
+            dd(Session::all());
+            return redirect('/'); // Chuyển hướng sau khi đăng nhập thành công
+        } 
+        else{
+            return redirect('about')->with('fail', 'Login failed');
         }
     }
     public function check_register(Request $request)
@@ -58,5 +45,12 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
         return redirect('/login')->with('sweetAlert', 'success');
+    }
+    public function change_password($id, Request $request) {
+        $user = User::find($id);
+        $user->password = Hash::make($request->input('new_password'));
+        $user->save();
+
+        return response()->json(['message' => 'Password changed successfully'], 200);
     }
 }

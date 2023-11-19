@@ -64,4 +64,11 @@ Route::get('/thesis-according-to-instructors', function () {
 Route::post('/post-login' , [UserController::class, 'check_login']);
 Route::post('/post-register' , [UserController::class, 'check_register']);
 
+Route::get('log-out',function (){
+    Auth::logout();
+    return redirect('/login');
+});
+
+Route::post('/change-pass/{id}',[UserController::class,'change_password']);
+
 
