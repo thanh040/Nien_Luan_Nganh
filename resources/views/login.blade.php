@@ -122,7 +122,6 @@
         text-decoration: underline;
         }
   </style>
-  
   <body>
     <div class="container">
       <div class="wrapper">
@@ -146,12 +145,36 @@
       </div>
     </div>
   </body>
+  @if(session()->has('fail'))
+    <script>
+      Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Sai email hoặc mật khẩu!',
+          showConfirmButton: false,
+          timer: 2000
+      })
+    </script>
+  @endif
+  
   @if(session()->has('sweetAlert'))
     <script>
       Swal.fire({
           position: 'center',
           icon: 'success',
           title: 'Đăng ký thành công!',
+          showConfirmButton: false,
+          timer: 2000
+      })
+  </script>
+  @endif
+  
+  @if(session()->has('changeSuccess'))
+    <script>
+      Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Đổi mật khẩu thành công!',
           showConfirmButton: false,
           timer: 2000
       })

@@ -19,9 +19,11 @@ Route::get('/', [UserController::class, 'index']);
 Route::get('/admin', function () {
     return view('admin.index');
 });
-Route::get('/login', function () {
-    return view('login');
-});
+
+Route::get('/login',[UserController::class, 'login']);
+
+Route::get('/list/{id}',[UserController::class, 'show_list']);
+
 Route::get('/register', function () {
     return view('register');
 });
@@ -64,11 +66,10 @@ Route::get('/thesis-according-to-instructors', function () {
 Route::post('/post-login' , [UserController::class, 'check_login']);
 Route::post('/post-register' , [UserController::class, 'check_register']);
 
-Route::get('log-out',function (){
+Route::get('/log-out',function (){
     Auth::logout();
     return redirect('/login');
 });
-
 Route::post('/change-pass/{id}',[UserController::class,'change_password']);
 
 
